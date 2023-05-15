@@ -21,20 +21,28 @@ let person3 = {
 
 
 function favoriteFood(person) {
-    Object.keys(person).forEach(key => {
-      if (Array.isArray(person[key])) {
-        console.log(`${key}:`);
+  Object.keys(person).forEach(key => {
+    if (Array.isArray(person[key])) {
+      console.log(`${key}:`);
+      if (key === "shakes") {
+        Object.keys(person[key][0]).forEach(shakeStore => {
+          console.log(`- ${person[key][0][shakeStore]}`);
+        });
+      } else {
         person[key].forEach(item => {
           console.log(`- ${item}`);
         });
-      } else {
-        console.log(`${key}: ${person[key]}`);
       }
-    });
-  }
-  
-  // Example usage:
-  favoriteFood(person3);
+    } else {
+      console.log(`${key}: ${person[key]}`);
+    }
+  });
+}
+
+// Example usage:
+favoriteFood(person3);
+
+
   
 
 //=======Exercise #2=========//
